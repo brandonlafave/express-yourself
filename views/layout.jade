@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    block head
+      link(rel='stylesheet', href='base.css')
+      link(rel='stylesheet', href='modules.css')
+      link(rel='stylesheet', href='layout.css')
+  body.align-center
+    block header
+      header.navbar
+        ul.menu.flex-container.flex-center
+          li.menu__item
+            a(href='/') Home
+          li.menu__item
+            a(href='/about') About
+          li.menu__item
+            a(href='/help') Help
+
+    block main
+      main.align-center
+
+    block footer
+      footer.align-center
+        &copy; Brandon and Peg 2015
