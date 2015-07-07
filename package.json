@@ -1,0 +1,23 @@
+{
+  "name": "express-yourself",
+  "version": "0.0.1",
+  "description": "Peg and Brandon Express/Node homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandonlafave/express-yourself.git"
+  },
+  "author": "Peg and Brandon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonlafave/express-yourself/issues"
+  },
+  "homepage": "https://github.com/brandonlafave/express-yourself",
+  "dependencies": {
+    "express": "^4.13.1",
+    "jade": "^1.11.0"
+  }
+}
