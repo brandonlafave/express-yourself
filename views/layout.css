@@ -1,3 +1,21 @@
-.main {
-  display: block;
+.menu {
+  list-style-type: none;
+  text-align: center;
+  /*flex-direction: column;*/
+}
+
+/*.flex-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+}*/
+
+@media screen and (min-width: 35em) {
+  .menu {
+    /*flex-direction: row;*/
+  }
 }

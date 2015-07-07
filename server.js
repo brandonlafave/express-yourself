@@ -5,6 +5,7 @@ var path = require('path');   //require the path module
 var app = express();  //creates express Object for later use
 var port = 3000;
 
+app.set('images', path.join(__dirname, 'images'));
 //view directory setup
 app.set('views', path.join(__dirname, 'views'));
 //view engine setup
@@ -19,8 +20,13 @@ app.get('/about', function(req, res) {  // '/' is GET route, then callback funct
   res.render('about');
 });
 
+app.get('/help', function(req, res) {  // '/' is GET route, then callback function for get
+  res.render('help');
+});
+
 //static services
 app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'images')));
 
 //app listener
 app.listen(port,function() {

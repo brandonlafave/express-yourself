@@ -1,22 +1,13 @@
-doctype HTML
-HTML
-  head
-    link(rel='stylesheet', href='layout.css')
-    link(rel='stylesheet', href='styles.css')
-    
-  body
-    header
+doctype html
+html
+  extends layout
+  append main
+    h1.center-text Home Page
+    article
       h1 sea-d48 node.js assignment
       h2 Brandon and Peg
-      ul.menu
-        li Home
-        li About
-        li Help
-    main
       h3 Lessons learned
       ul
         li Don't forget to delete html files
         li Don't forget to save your file before attempting to run it
-
-    footer
-      &copy; Brandon and Peg 2015
+        li Don't forget to move link/anchor items to their own line
