@@ -24,7 +24,7 @@ app.get('/help', function(req, res) {  // '/' is GET route, then callback functi
 });
 
 //static services
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //app listener
 app.listen(port,function() {
