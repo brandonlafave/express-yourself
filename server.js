@@ -30,26 +30,37 @@ app.get('/help', function(req, res) {  // '/' is GET route, then callback functi
 // //static services
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(bodyParser());
+
 //ROUTES
 var birds = ['Flamingo', 'Parrot', 'Bald Eagle', 'Sparrow'];
 router.get('/birds', function(req, res) {
     res.json(birds);
+    console.log("Get Bird");
 });
 
 router.delete('/birds', function(req, res) {
-    birds[2] = '';
+    birds.splice(2,1);
     res.json(birds);
+    console.log("Delete Bird");
+});
+
+router.post('/birds', function(req, res) {
+  var html = '<html>' + '<body>' + '<p>Test</p>' + '</body>' '</html>'
+  console.log(html);
+  res.send(html);
 });
 
 router.put('/birds', function(req, res) {
     birds[0] = 'Falcon';
     res.json(birds);
+    console.log("Put Bird");
 });
 
-router.post('/birds', function(req, res) {
-    birds[0] = 'Falcon';
-    res.json(birds);
-});
+// router.post('/birds', function(req, res) {
+//     birds[0] = 'Falcon';
+//     res.json(birds);
+// });
 
 app.use('/endpoints', router);
 
