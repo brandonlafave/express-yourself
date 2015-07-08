@@ -51,7 +51,7 @@ router.delete('/birds', function(req, res) {
 });
 
 router.post('/birds', function(req, res) {
-  res.redirect('/poems');
+  res.json(req.body);
   console.log(req.body);
 });
 
