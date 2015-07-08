@@ -27,6 +27,11 @@ app.get('/help', function(req, res) {  // '/' is GET route, then callback functi
   res.render('help');
 });
 
+app.get('/poems', function(req, res) {  // '/' is GET route, then callback function for get
+  res.render('poems');
+});
+
+
 // //static services
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -46,9 +51,8 @@ router.delete('/birds', function(req, res) {
 });
 
 router.post('/birds', function(req, res) {
-  var html = '<html>' + '<body>' + '<p>Test</p>' + '</body>' '</html>'
-  console.log(html);
-  res.send(html);
+  res.redirect('/poems');
+  console.log(req.body);
 });
 
 router.put('/birds', function(req, res) {
