@@ -3,7 +3,11 @@
 var express = require('express');  //include express.js library
 var path = require('path');   //require the path module
 var app = express();  //creates express Object for later use
+var bodyParser = require('body-parser');
 var port = 3000;
+var router = express.Router();
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 //view directory setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +27,15 @@ app.get('/help', function(req, res) {  // '/' is GET route, then callback functi
   res.render('help');
 });
 
-//static services
+// //static services
 app.use(express.static(path.join(__dirname, 'public')));
+
+//ROUTES
+router.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to Peg and Brandon\'s api!' });
+});
+
+app.use('/endpoints', router);
 
 //app listener
 app.listen(port,function() {
