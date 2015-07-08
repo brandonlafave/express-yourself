@@ -31,8 +31,24 @@ app.get('/help', function(req, res) {  // '/' is GET route, then callback functi
 app.use(express.static(path.join(__dirname, 'public')));
 
 //ROUTES
-router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to Peg and Brandon\'s api!' });
+var birds = ['Flamingo', 'Parrot', 'Bald Eagle', 'Sparrow'];
+router.get('/birds', function(req, res) {
+    res.json(birds);
+});
+
+router.delete('/birds', function(req, res) {
+    birds[2] = '';
+    res.json(birds);
+});
+
+router.put('/birds', function(req, res) {
+    birds[0] = 'Falcon';
+    res.json(birds);
+});
+
+router.post('/birds', function(req, res) {
+    birds[0] = 'Falcon';
+    res.json(birds);
 });
 
 app.use('/endpoints', router);
