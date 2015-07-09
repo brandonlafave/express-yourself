@@ -6,4 +6,7 @@ body {
   max-width: 968px;
 
 }
-
+p {
+  white-space: pre;
+  color:red;
+}
