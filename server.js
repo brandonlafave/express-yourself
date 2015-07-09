@@ -11,6 +11,9 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/express');
 
+var routes = require('./routes/index');
+// var birds = require('./routes/birds');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -21,7 +24,7 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/birds', users);
+// app.use('/birds', birds);
 
 //view directory setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,22 +32,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 //index get request
-app.get('/', function(req, res) {  // '/' is GET route, then callback function for get
-  res.render('index');
-});
-
-app.get('/about', function(req, res) {  // '/' is GET route, then callback function for get
-  res.render('about');
-});
-
-app.get('/help', function(req, res) {  // '/' is GET route, then callback function for get
-  res.render('help');
-});
-
-app.get('/poems', function(req, res) {  // '/' is GET route, then callback function for get
-  res.render('poems');
-});
-
+// app.get('/', function(req, res) {  // '/' is GET route, then callback function for get
+//   res.render('index');
+// });
+//
+// app.get('/about', function(req, res) {  // '/' is GET route, then callback function for get
+//   res.render('about');
+// });
+//
+// app.get('/help', function(req, res) {  // '/' is GET route, then callback function for get
+//   res.render('help');
+// });
+//
+// app.get('/poems', function(req, res) {  // '/' is GET route, then callback function for get
+//   res.render('poems');
+// });
 
 // //static services
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,28 +54,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser());
 
 //ROUTES
-var birds = ['Flamingo', 'Parrot', 'Bald Eagle', 'Sparrow'];
-router.get('/birds', function(req, res) {
-    res.json(birds);
-    console.log("Get Bird");
-});
-
-router.delete('/birds', function(req, res) {
-    birds.splice(2,1);
-    res.json(birds);
-    console.log("Delete Bird");
-});
-
-router.post('/birds', function(req, res) {
-  res.json(req.body);
-  console.log(req.body);
-});
-
-router.put('/birds', function(req, res) {
-    birds[0] = 'Falcon';
-    res.json(birds);
-    console.log("Put Bird");
-});
+// var staticBirds = ['Flamingo', 'Parrot', 'Bald Eagle', 'Sparrow'];
+// router.get('/birds', function(req, res) {
+//     res.json(staticBirds);
+//     console.log("Get Bird");
+// });
+//
+// router.delete('/birds', function(req, res) {
+//     staticBirds.splice(2,1);
+//     res.json(staticBirds);
+//     console.log("Delete Bird");
+// });
+//
+// router.post('/birds', function(req, res) {
+//   res.json(req.body);
+//   console.log(req.body);
+// });
+//
+// router.put('/birds', function(req, res) {
+//     staticBirds[0] = 'Falcon';
+//     res.json(staticBirds);
+//     console.log("Put Bird");
+// });
 
 // router.post('/birds', function(req, res) {
 //     birds[0] = 'Falcon';
@@ -82,36 +84,36 @@ router.put('/birds', function(req, res) {
 
 app.use('/endpoints', router);
 
-/// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
+// /// catch 404 and forwarding to error handler
+// app.use(function(req, res, next) {
+//     var err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
+// });
 
 /// error handlers
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
+// // development error handler
+// // will print stacktrace
+// if (app.get('env') === 'development') {
+//     app.use(function(err, req, res, next) {
+//         res.status(err.status || 500);
+//         res.render('error', {
+//             message: err.message,
+//             error: err
+//         });
+//     });
+// }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//         message: err.message,
+//         error: {}
+//     });
+// });
 
 /* GET Userlist page. */
 router.get('/birdlist', function(req, res) {
@@ -122,6 +124,11 @@ router.get('/birdlist', function(req, res) {
             "birdlist" : docs
         });
     });
+});
+
+/* GET New User page. */
+router.get('/newbird', function(req, res) {
+    res.render('newbird', { title: 'Add New Bird' });
 });
 
 //app listener
