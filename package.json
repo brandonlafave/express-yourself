@@ -18,6 +18,7 @@
   "homepage": "https://github.com/brandonlafave/express-yourself",
   "dependencies": {
     "body-parser": "^1.13.2",
+    "bson": "^0.4.7",
     "express": "^4.13.1",
     "jade": "^1.11.0",
     "mongodb": "^2.0.36",

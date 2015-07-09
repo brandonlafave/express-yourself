@@ -6,7 +6,6 @@ var app = express();  //creates express Object for later use
 var bodyParser = require('body-parser');
 var port = 3000;
 var router = express.Router();
-
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/express');
