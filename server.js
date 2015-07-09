@@ -6,8 +6,22 @@ var app = express();  //creates express Object for later use
 var bodyParser = require('body-parser');
 var port = 3000;
 var router = express.Router();
+
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/express');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
+app.use('/', routes);
+app.use('/birds', users);
 
 //view directory setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,6 +81,48 @@ router.put('/birds', function(req, res) {
 // });
 
 app.use('/endpoints', router);
+
+/// catch 404 and forwarding to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+/// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
+/* GET Userlist page. */
+router.get('/birdlist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('birdcollection');
+    collection.find({},{},function(e,docs){
+        res.render('birdlist', {
+            "birdlist" : docs
+        });
+    });
+});
 
 //app listener
 app.listen(port,function() {
