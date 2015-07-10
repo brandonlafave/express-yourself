@@ -3,23 +3,10 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var birdSchema = new Schema ({
-  birdname: String,
-  color: String
+var Bird = mongoose.model("Bird", {
+    birdname: String,
+    birdcolor: String
 });
-
-var Bird = mongoose.model('Bird', birdSchema);
-
-// /* GET home page. */
-// router.get("/", function(req, res) {
-//     res.render('index', { title: 'Express' });
-// });
-//
-// /* GET Hello World page. */
-// router.get("/helloworld", function(req, res) {
-//     res.render("helloworld", { title: 'Hello, World!' });
-// });
-/* GET Userlist page. */
 
 /* GET New User page. */
 router.get('/newbird', function(req, res) {
@@ -37,21 +24,18 @@ router.get("/birdlist", function(req, res) {
 });
 
 /* POST to Add User Service */
+//********************
 router.post('/addbird', function(req, res) {
 
     // Set our internal DB variable
     var db = req.db;
-
-    // Get our form values. These rely on the "name" attributes
-    var newBird = new birdSchema(req.body.birdname, req.body.birdcolor);
-
     // Set our collection
     var collection = db.get('birdcollection');
 
     // Submit to the DB
     collection.insert({
-        "birdname" : newBird.birdname,
-        "color" : newBird.color
+        "birdname" : req.body.birdname,
+        "color" : req.body.birdcolor
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -62,6 +46,27 @@ router.post('/addbird', function(req, res) {
             res.redirect("birdlist");
         }
     });
+});
+
+// delete a bird
+router.delete('/removebird', function(req, res) {
+// Set our internal DB variable
+  var db = req.db;
+  // Set our collection
+  var collection = db.get('birdcollection');
+
+  collection.remove({
+      birdname: req.body.birdname
+  }, function(err, doc) {
+    if (err) {
+        // If it failed, return error
+        res.send("There was a problem removing the item from the database.");
+    }
+    else {
+        // And forward to success page
+        res.redirect("birdlist");
+    }
+  });
 });
 
 module.exports = router;

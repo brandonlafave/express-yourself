@@ -11,7 +11,6 @@ var monk = require('monk');
 var db = monk('localhost:27017/express');
 
 var routes = require('./routes/index');
-// var birds = require('./routes/birds');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -75,44 +74,13 @@ app.use(bodyParser());
 //     res.json(staticBirds);
 //     console.log("Put Bird");
 // });
-
+//
 // router.post('/birds', function(req, res) {
 //     birds[0] = 'Falcon';
 //     res.json(birds);
 // });
 
 app.use('/endpoints', router);
-
-// /// catch 404 and forwarding to error handler
-// app.use(function(req, res, next) {
-//     var err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
-
-/// error handlers
-
-// // development error handler
-// // will print stacktrace
-// if (app.get('env') === 'development') {
-//     app.use(function(err, req, res, next) {
-//         res.status(err.status || 500);
-//         res.render('error', {
-//             message: err.message,
-//             error: err
-//         });
-//     });
-// }
-
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//         message: err.message,
-//         error: {}
-//     });
-// });
 
 /* GET Userlist page. */
 router.get('/birdlist', function(req, res) {
