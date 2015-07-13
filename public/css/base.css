@@ -1,12 +1,11 @@
 header {
-  color: red;
-}
+  color: red; }
 
 body {
-  max-width: 968px;
+  max-width: 968px; }
 
-}
 p {
   white-space: pre;
-  color:red;
-}
+  color: red; }
+
+/*# sourceMappingURL=base.css.map */

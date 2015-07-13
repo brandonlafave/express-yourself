@@ -1,0 +1,23 @@
+.menu {
+  margin: 0;
+}
+
+.menu__item {
+  display: block;
+  padding: 0;
+}
+
+.align-center {
+  margin: 0 auto;
+}
+
+.center-text {
+  text-align: center;
+}
+
+@media screen and (min-width: 35em){
+  .menu__item {
+    display: inline-block;
+    padding: 2em 1em;
+  }
+}
