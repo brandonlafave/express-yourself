@@ -1,0 +1,13 @@
+doctype html
+html
+  extends ../layout
+  append main
+      h1.
+          #{title}
+      form#formAddBird(name="addbird",method="post",action="/birds")
+          p Name:
+              input#inputName(type="text", placeholder="ex. Pigeon", name="birdname")
+          p Color:
+              input#inputColor(type="text", placeholder="ex. Gray", name="birdcolor")
+          p
+              button#btnSubmit(type="submit") submit

@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var Bird = mongoose.model("Bird", {
-    birdname: String,
-    birdcolor: String
-});
+// var Schema = mongoose.Schema;
+//
+// var Bird = mongoose.model("Bird", {
+//     birdname: String,
+//     birdcolor: String
+// });
 
 /* GET New User page. */
 router.get('/newbird', function(req, res) {
@@ -56,7 +56,7 @@ router.delete('/removebird', function(req, res) {
   var collection = db.get('birdcollection');
 
   collection.remove({
-      birdname: req.body.birdname
+      "birdname": req.body.birdname
   }, function(err, doc) {
     if (err) {
         // If it failed, return error
