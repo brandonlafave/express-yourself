@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var port = 3000;
-var router = express.Router();
+//var router = express.Router();
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = require('./model/db');
@@ -18,8 +18,6 @@ var birds = require('./routes/birds');
 
 //view directory setup
 app.set('views', path.join(__dirname, 'views'));
-//view engine setup
-app.set('view engine', 'jade');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
