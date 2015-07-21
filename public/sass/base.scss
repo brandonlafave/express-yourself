@@ -1,0 +1,14 @@
+@import 'modules';
+
+header {
+  color: $primary-color;
+}
+
+body {
+  max-width: (968px / 968px) * 968px;
+}
+
+p {
+  white-space: pre;
+  @extend header;
+}

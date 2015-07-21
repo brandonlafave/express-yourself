@@ -1,0 +1,45 @@
+$size: 0;
+$primary-color: red;
+$secondary-color: blue;
+$tertirary-color: green;
+$background-color: orange;
+$align-center: center;
+
+.menu {
+  margin: $size;
+  background-color: $background-color;
+  list-style-type: none;
+  text-align: $align-center;
+  a {
+    text-decoration: none;
+    color: $secondary-color;
+    }
+    :hover {
+      color: $primary-color;
+      background-color: red;
+    }
+    :visited {
+      text-decoration: none;
+      color: $tertirary-color;
+    }
+  }
+
+.menu__item {
+  display: block;
+  padding: $size;
+}
+
+.align-center {
+  margin: $size auto;
+}
+
+.center-text {
+  text-align: $align-center;
+}
+
+@media screen and (min-width: 35em){
+  .menu__item {
+    display: inline-block;
+    padding: 2em 1em;
+  }
+}

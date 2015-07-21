@@ -1,23 +1,31 @@
 .menu {
   margin: 0;
-}
+  background-color: orange;
+  list-style-type: none;
+  text-align: center; }
+  .menu a {
+    text-decoration: none;
+    color: blue; }
+  .menu :hover {
+    color: red;
+    background-color: red; }
+  .menu :visited {
+    text-decoration: none;
+    color: green; }
 
 .menu__item {
   display: block;
-  padding: 0;
-}
+  padding: 0; }
 
 .align-center {
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .center-text {
-  text-align: center;
-}
+  text-align: center; }
 
-@media screen and (min-width: 35em){
+@media screen and (min-width: 35em) {
   .menu__item {
     display: inline-block;
-    padding: 2em 1em;
-  }
-}
+    padding: 2em 1em; } }
+
+/*# sourceMappingURL=modules.css.map */
