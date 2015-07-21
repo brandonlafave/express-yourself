@@ -1,0 +1,16 @@
+doctype html
+html
+  extends ../layout
+  append main
+    h1.
+        Bird ID #{bird._id}
+    form(action='/birds/#{bird._id}/edit',method='post',name='updatebird',enctype='application/x-www-form-urlencoded')
+        p Name:
+            input#inputName(type='text', value='#{bird.birdname}', name='birdname')
+        p Color:
+            input#inputColor(type='text', value='#{bird.birdcolor}', name='birdcolor')
+        p
+            input(type='hidden',value='PUT',name='_method')
+        p
+            button#btnSubmit(type='submit').
+                Update

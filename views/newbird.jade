@@ -1,0 +1,13 @@
+extends layout
+
+block main
+    h1= title
+    form#formAddUser(name="addbird",method="post",action="/addbird")
+        input#inputBirdName(type="text", placeholder="birdname", name="birdname")
+        input#inputBirdColor(type="text", placeholder="bird color", name="birdcolor")
+        button#btnSubmit(type="submit") submit
+    br
+    h1 Remove Bird
+    form#formAddUser(name="removebird",method="delete",action="/removebird")
+        input#inputBirdName(type="text", placeholder="birdname", name="birdname")
+        button#btnSubmit(type="submit") submit
