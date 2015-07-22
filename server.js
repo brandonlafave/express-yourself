@@ -18,8 +18,6 @@ var birds = require('./routes/birds');
 
 //view directory setup
 app.set('views', path.join(__dirname, 'views'));
-//view engine setup
-app.set('view engine', 'jade');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
