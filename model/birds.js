@@ -1,6 +1,10 @@
+'use strict'
+
 var mongoose = require('mongoose');
 var birdSchema = new mongoose.Schema({
   birdname: String,
-  birdcolor: String
+  birdcolor: String,
+  sightingDate: new Date()
 });
-mongoose.model('Bird', birdSchema);
+
+module.exports = mongoose.model('Bird', birdSchema, '');
