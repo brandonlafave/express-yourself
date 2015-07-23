@@ -8,3 +8,4 @@ var birdWatcher = angular.module('birdWatcherApp', []);
 require('./controllers/MainController.js')(birdWatcher);
 
 //directives
+require('./directives/navigationDirective.js')(birdWatcher);
