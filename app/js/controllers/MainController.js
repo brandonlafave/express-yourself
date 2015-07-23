@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+  app.controller('MainController', ['$scope', '$http', function($scope, $http) {
 
     var getAll = function(){
       $http.get('/birds').success(function(response){
@@ -31,5 +31,5 @@ module.exports = function(app) {
       console.log(oneBirdy);
     };
 
-  }]);
+ }]);
 };
