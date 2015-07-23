@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html data-ng-app="birdies">
+<html data-ng-app="birdWatcherApp">
   <head>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/modules.css">
     <link rel="stylesheet" href="css/layout.css">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
   </head>
   <body class="align-center">
     <header class="navbar">
@@ -14,22 +13,36 @@
         <li class="menu__item"><a href="help.html">Help</a></li>
       </ul>
     </header>
-    <main class="align-center"></main>
+    <main class="align-center" data-ng-controller="mainController"></main>
     <h1 class="center-text">Home Page</h1>
-    <article>
-      <!--
-        ng-repeat
-        ng-model
-        ng-click
-        ng-if
-        Any others that suit your needs
-      -->
+
+    <form data-ng-submit="submitForm(oneBirdy)">
+      <input id="inputBirdName" type="text" placeholder="Bird name" name="birdname" data-ng-model="oneBirdy.birdname">
+      <input id="inputBirdColor" type="text" placeholder="Bird color" name="birdcolor" data-ng-model="oneBirdy.birdcolor">
+      <input id="inputSightingDate" type="text" placeholder="01/07/1943" name="sightingDate" data-ng-model="oneBirdy.sightingDate">
+      <button id="btnSubmit" type="submit">submit</button>
+    </form>
+
       <ul>
-        <li data-ng-repeat
+        <li data-ng-repeat="bird in birds">
+          <h3>{{ bird.birdname }}</h3>
+          <ul>
+            <li>
+              Bird Color: {{ bird.birdcolor }}
+            </li>
+            <li>
+              Date Seen: {{ bird.sightingDate }}
+            </li>
+
+            <li>
+              <button class="btn-caution" data-ng-click="edit(setting)">Edit</button>
+              <button class="btn-alert" data-ng-click="destroy(setting._id)">Destroy</button>
+            </li>
+          </ul>
+        </li>
       </ul>
-    </article>
+
     <footer class="align-center">&copy; Brandon and Peg 2015</footer>
-    <script src="js/app.js"></script>
-    <script src="js/controllers/MainController.js"></script>
+    <script src="js/bundle.js"></script>
   </body>
 </html>

@@ -1,24 +1,35 @@
-app.controller("MainController", ['$scope', function($scope) {
-  $scope.birds = [
-    {
-      birdname: "Cardinal",
-      birdcolor: "Red",
-      time: new Date('2015', '05', '08')
-    },
-    {
-      birdname: "Canary",
-      birdcolor: "Yellow",
-      time: new Date('2014', '03', '17')
-    },
-    {
-      birdname: "Blue Jay",
-      birdcolor: "Blue",
-      time: new Date('1983', '07', '22')
-    },    ,
-    {
-      birdname: "Chicken",
-      birdcolor: "Brown",
-      time: new Date('2015', '07', '22')
+'use strict';
+
+module.exports = function(app) {
+  app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+
+    var getAll = function(){
+      $http.get('/birds').success(function(response){
+        console.log(response);
+        $scope.birds = response;
+      });
+    };
+    getAll();
+
+  $scope.submitForm = function(oneBirdy) {
+      console.log(oneBirdy);
+      console.log("Test");
+      $http.post('/birds', oneBirdy).success(function(response) {
+        getAll();
+      });
+    };
+
+  $scope.destroy = function(id) {
+      console.log(id);
+      $http.delete('/birds/' + id).success(function(response) {
+        getAll();
+      });
     }
-  ];
-}]);
+
+    $scope.edit = function(oneBirdy) {
+      oneBirdy.editing = true;
+      console.log(oneBirdy);
+    };
+
+  }]);
+};
