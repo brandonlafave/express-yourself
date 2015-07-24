@@ -7,9 +7,11 @@ var Bird = require('../model/birds.js');
 
 module.exports = function(router){
   router.use(bodyParser.json());
-  router.get('/controllers', function(req, res) {
+  router.get('/birds', function(req, res) {
     console.log('Index router');
     Bird.find({}, function(err, data) {
+      console.log(req.body);
+      console.log(data);
       if (err) {
         console.log(err);
       }
@@ -17,7 +19,7 @@ module.exports = function(router){
     });
   });
 
-  router.post('/controllers', function(req, res) {
+  router.post('/birds', function(req, res) {
     console.log('You hit the post')
     var newBird = new Bird(req.body);
     console.log(req.body);
@@ -30,7 +32,7 @@ module.exports = function(router){
     });
   });
 
-    router.put('/controllers/:id', function (req, res) {
+    router.put('/birds/:id', function (req, res) {
     console.log('Hit update route');
     var updatedSetting = req.body;
     delete updatedSetting._id;
@@ -45,7 +47,7 @@ module.exports = function(router){
     });
   });
 
-  router.delete('/controllers/:id', function(req, res) {
+  router.delete('/birds/:id', function(req, res) {
     console.log('You hit delete');
     Setting.remove({'_id': req.params.id}, function(err, data) {
       if (err) {
