@@ -28,8 +28,8 @@ module.exports = function(app) {
         update: function(id, data, callback) {
           $http({
             method: 'PUT',
-            url: '/' + resourceName + '/' + resource._id,
-            data: resource
+            url: '/' + resourceName + '/' + id,
+            data: data
           })
           .success(callback)
           .error(errorHandler);

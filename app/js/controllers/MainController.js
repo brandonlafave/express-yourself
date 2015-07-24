@@ -71,7 +71,7 @@ module.exports = function(app) {
     //       getAll();
     // };
     $scope.update = function(id, oneBirdy) {
-			console.log(id);
+			console.log("updating " + id);
 			Bird.update(id, oneBirdy, function(response) {
 				oneBirdy.editing = false;
 				$scope.getBirds();
