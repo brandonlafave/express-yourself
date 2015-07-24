@@ -19,7 +19,7 @@ module.exports = function(router){
     });
   });
 
-  router.post('/birds', function(req, res) {
+  router.post('/birds/', function(req, res) {
     console.log('You hit the post')
     var newBird = new Bird(req.body);
     console.log(req.body);
@@ -39,10 +39,12 @@ module.exports = function(router){
 
     Bird.update({'_id': req.params.id}, updatedBird, function (err, data) {
       console.log(req.body);
-      if (err) {
-        errorResponse(err, res);
-        return;
-      }
+      // if (err) {
+      //   errorResponse(err, res);
+      //   return;
+      //   console.log(errorResponse);
+      // }
+      console.log(data);
       res.json({msg: 'updated successfully'});
     });
   });

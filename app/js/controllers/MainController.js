@@ -30,7 +30,6 @@ module.exports = function(app) {
     };
 
     $scope.edit = function(oneBirdy) {
-      console.log(oneBirdy.editing);
       oneBirdy.editing = true;
       console.log(oneBirdy.editing);
     };
@@ -41,7 +40,7 @@ module.exports = function(app) {
 
     $scope.update = function(oneBirdy) {
 		    console.log(oneBirdy);
-        $http.put('/birds/' + oneBirdy._id, oneBirdy)
+        $http.put('/birds/' + oneBirdy)
         .error(function (error) {
           console.log(error);
           //$scope.errors.push({msg: 'could not update bird'});
