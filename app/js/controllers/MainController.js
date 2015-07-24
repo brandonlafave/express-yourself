@@ -11,7 +11,7 @@ module.exports = function(app) {
     };
     getAll();
 
-  $scope.submitForm = function(oneBirdy) {
+    $scope.submitForm = function(oneBirdy) {
       console.log(oneBirdy);
       console.log("Test");
       $http.post('/birds', oneBirdy).success(function(response) {
@@ -19,30 +19,32 @@ module.exports = function(app) {
       });
     };
 
-  $scope.destroy = function(id) {
+    $scope.destroy = function(id) {
       console.log(id);
       $http.delete('/birds/' + id).success(
         function(response) {
           console.log(response);
           getAll();
-      });
+       }
+     );
     };
 
     $scope.edit = function(oneBirdy) {
+      console.log(oneBirdy.editing);
       oneBirdy.editing = true;
-      console.log(oneBirdy);
+      console.log(oneBirdy.editing);
     };
 
-   $scope.cancel = function(oneBirdy) {
-      $scope.getAll();
+    $scope.cancel = function(oneBirdy) {
+      getAll();
     };
 
-   $scope.update = function(id, oneBirdy) {
-     console.log(id);
-     Bird.update(id, oneBirdy, function(response) {
-       oneBirdy.editing = false;
-       $scope.getAll();
-     });
-   };
+    $scope.update = function(id, oneBirdy) {
+ 			console.log(id);
+ 			Bird.update(id, oneBirdy, function(response) {
+ 				oneBirdy.editing = false;
+ 				getAll();
+ 			});
+ 		};
  }]);
 };

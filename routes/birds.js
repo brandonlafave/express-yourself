@@ -47,7 +47,6 @@ module.exports = function(router){
     });
   });
 
-
   router.delete('/birds/:id', function(req, res) {
     console.log('You hit delete');
     Bird.remove({'_id': req.params.id}, function(err, data) {
