@@ -13,6 +13,7 @@ module.exports = function(app) {
     // };
     // getAll();
     $scope.getBirds = function(){
+      console.log("getting birds?");
 			Bird.getAll(function(response){
 				console.log(response);
 				$scope.birds = response;
@@ -50,12 +51,6 @@ module.exports = function(app) {
 			});
 		};
 
-    // $scope.edit = function(oneBirdy) {
-    //   console.log(oneBirdy.editing);
-    //   oneBirdy.editing = true;
-    //   console.log(oneBirdy.editing);
-    // };
-
     $scope.edit = function(oneBirdy) {
 			oneBirdy.editing = true;
 			console.log(oneBirdy.editing);
@@ -82,6 +77,5 @@ module.exports = function(app) {
 				$scope.getBirds();
 			});
 		};
-
  }]);
 };

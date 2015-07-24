@@ -16,7 +16,7 @@ module.exports = function(app) {
           .success(callback)
           .error(errorHandler);
         },
-        submit: function(resource, callback) {
+        submitForm: function(resource, callback) {
           $http({
             method: 'POST',
             url: '/' + resourceName,
@@ -28,8 +28,8 @@ module.exports = function(app) {
         update: function(id, data, callback) {
           $http({
             method: 'PUT',
-            url: '/' + resourceName + '/' + id,
-            data: data
+            url: '/' + resourceName + '/' + resource._id,
+            data: resource
           })
           .success(callback)
           .error(errorHandler);
