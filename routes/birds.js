@@ -32,12 +32,12 @@ module.exports = function(router){
     });
   });
 
-    router.put('/birds/:id', function (req, res) {
+  router.put('/birds/:id', function (req, res) {
     console.log('Hit update route');
-    var updatedSetting = req.body;
-    delete updatedSetting._id;
+    var updatedBird = req.body;
+    delete updatedBird._id;
 
-    Setting.update({'_id': req.params.id}, updatedSetting, function (err, data) {
+    Bird.update({'_id': req.params.id}, updatedBird, function (err, data) {
       console.log(req.body);
       if (err) {
         errorResponse(err, res);
@@ -47,9 +47,10 @@ module.exports = function(router){
     });
   });
 
+
   router.delete('/birds/:id', function(req, res) {
     console.log('You hit delete');
-    Setting.remove({'_id': req.params.id}, function(err, data) {
+    Bird.remove({'_id': req.params.id}, function(err, data) {
       if (err) {
         errorResponse(err, res);
         return;

@@ -21,15 +21,28 @@ module.exports = function(app) {
 
   $scope.destroy = function(id) {
       console.log(id);
-      $http.delete('/birds/' + id).success(function(response) {
-        getAll();
+      $http.delete('/birds/' + id).success(
+        function(response) {
+          console.log(response);
+          getAll();
       });
-    }
+    };
 
     $scope.edit = function(oneBirdy) {
       oneBirdy.editing = true;
       console.log(oneBirdy);
     };
 
+   $scope.cancel = function(oneBirdy) {
+      $scope.getAll();
+    };
+
+   $scope.update = function(id, oneBirdy) {
+     console.log(id);
+     Bird.update(id, oneBirdy, function(response) {
+       oneBirdy.editing = false;
+       $scope.getAll();
+     });
+   };
  }]);
 };
