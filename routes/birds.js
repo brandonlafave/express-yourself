@@ -1,7 +1,5 @@
 'use strict'
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose'); //mongo connection
+
 var bodyParser = require('body-parser'); //parses information from POST
 var Bird = require('../model/birds.js');
 
