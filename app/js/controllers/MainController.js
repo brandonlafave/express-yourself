@@ -39,12 +39,15 @@ module.exports = function(app) {
       getAll();
     };
 
-    $scope.update = function(id, oneBirdy) {
- 			console.log(id);
- 			Bird.update(id, oneBirdy, function(response) {
- 				oneBirdy.editing = false;
- 				getAll();
- 			});
- 		};
+    $scope.update = function(oneBirdy) {
+		    console.log(oneBirdy);
+        $http.put('/birds/' + oneBirdy._id, oneBirdy)
+        .error(function (error) {
+          console.log(error);
+          //$scope.errors.push({msg: 'could not update bird'});
+        });
+		      oneBirdy.editing = false;
+          getAll();
+    };
  }]);
 };
