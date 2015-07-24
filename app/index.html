@@ -1,30 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="birdWatcherApp">
   <head>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/modules.css">
     <link rel="stylesheet" href="css/layout.css">
   </head>
   <body class="align-center">
-    <header class="navbar">
-      <ul class="menu flex-container flex-center">
-        <li class="menu__item"><a href="index.html">Home</a></li>
-        <li class="menu__item"><a href="about.html">About</a></li>
-        <li class="menu__item"><a href="help.html">Help</a></li>
-      </ul>
-    </header>
-    <main class="align-center"></main>
-    <h1 class="center-text">Home Page</h1>
-    <article>
-      <h1>sea-d48 node.js assignment</h1>
-      <h2>Brandon and Peg</h2>
-      <h3>Lessons learned</h3>
+    <section data-navigation-directive></section>
+    <main class="align-center" data-ng-controller="MainController">
+      <h1 class="center-text">Home Page</h1>
+
+      <form data-ng-submit="submitForm(oneBirdy)">
+        <input id="inputBirdName" type="text" placeholder="Bird name" name="birdname" data-ng-model="oneBirdy.birdname">
+        <input id="inputBirdColor" type="text" placeholder="Bird color" name="birdcolor" data-ng-model="oneBirdy.birdcolor">
+        <input id="inputSightingDate" type="text" placeholder="01/07/1943" name="sightingDate" data-ng-model="oneBirdy.sightingDate">
+        <button id="btnSubmit" type="submit">submit</button>
+      </form>
       <ul>
-        <li>Don't forget to delete html files</li>
-        <li>Don't forget to save your file before attempting to run it</li>
-        <li>Don't forget to move link/anchor items to their own line</li>
+        <li data-ng-repeat="bird in birds">
+          <div data-ng-if="!bird.editing">
+            <h3>{{ bird.birdname }}</h3>
+            <ul>
+              <li>
+                 Bird Color: {{ bird.birdcolor }}
+              </li>
+              <li>
+                 Date Seen: {{ bird.sightingDate }}
+              </li>
+              <li>
+                <button data-ng-click="edit(bird)">Edit</button>
+                <button data-ng-click="destroy(bird._id)">Destroy</button>
+              </li>
+            </ul>
+          </div>
+        <div data-ng-if="bird.editing">
+        <h3>Edit {{ bird.birdname }}</h3>
+        <ul>
+          <li>
+            <label for="edit__birdColor">Color: </label>
+            <input id="edit__birdColor" type="text" data-ng-model="bird.birdcolor" >
+          </li>
+          <li>
+            <label for="edit_sightingDate">Sighting Date: </label>
+            <input id="edit_sightingDate" type="text" data-ng-model="bird.sightingDate" >
+          </li>
+          <li>
+            <button data-ng-click="bird.editing = false">Cancel</button>
+            <button data-ng-click="update(bird)">Save</button>|
+          </li>
+        </ul>
+      </div>
+        </li>
       </ul>
-    </article>
+    </main>
     <footer class="align-center">&copy; Brandon and Peg 2015</footer>
+    <script src="js/bundle.js"></script>
   </body>
 </html>
