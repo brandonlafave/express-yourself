@@ -8,14 +8,9 @@
   <body class="align-center">
     <section data-navigation-directive></section>
     <main class="align-center" data-ng-controller="MainController" data-ng-init="getBirds()">
-      <h1 class="center-text">Home Page</h1>
-
-      <form data-ng-submit="submitForm(oneBirdy)">
-        <input id="inputBirdName" type="text" placeholder="Bird name" name="birdname" data-ng-model="oneBirdy.birdname">
-        <input id="inputBirdColor" type="text" placeholder="Bird color" name="birdcolor" data-ng-model="oneBirdy.birdcolor">
-        <input id="inputSightingDate" type="text" placeholder="01/07/1943" name="sightingDate" data-ng-model="oneBirdy.sightingDate">
-        <button id="btnSubmit" type="submit">submit</button>
-      </form>
+      <h1 class="center-text">Bird Watcher</h1>
+      <section data-new-bird-form-directive></section>
+      <!-- <a href="#/birdlist">Bird list</a> -->
       <ul>
         <li data-ng-repeat="bird in birds">
           <div data-ng-if="!bird.editing">
@@ -53,7 +48,7 @@
         </li>
       </ul>
     </main>
-    <footer class="align-center">&copy; Brandon and Peg 2015</footer>
+    <footer data-footer-directive></footer>
     <script src="js/bundle.js"></script>
   </body>
 </html>
