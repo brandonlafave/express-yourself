@@ -1,4 +1,4 @@
-<ul>
+<ul data-ng-controller="MainController" data-ng-init="getBirds()">
   <li data-ng-repeat="bird in birds">
     <div data-ng-if="!bird.editing">
       <h3>{{ bird.birdname }}</h3>
