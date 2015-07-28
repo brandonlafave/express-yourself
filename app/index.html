@@ -1,30 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="birdWatcherApp">
   <head>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/modules.css">
     <link rel="stylesheet" href="css/layout.css">
   </head>
   <body class="align-center">
-    <header class="navbar">
-      <ul class="menu flex-container flex-center">
-        <li class="menu__item"><a href="index.html">Home</a></li>
-        <li class="menu__item"><a href="about.html">About</a></li>
-        <li class="menu__item"><a href="help.html">Help</a></li>
-      </ul>
-    </header>
-    <main class="align-center"></main>
-    <h1 class="center-text">Home Page</h1>
-    <article>
-      <h1>sea-d48 node.js assignment</h1>
-      <h2>Brandon and Peg</h2>
-      <h3>Lessons learned</h3>
-      <ul>
-        <li>Don't forget to delete html files</li>
-        <li>Don't forget to save your file before attempting to run it</li>
-        <li>Don't forget to move link/anchor items to their own line</li>
-      </ul>
-    </article>
-    <footer class="align-center">&copy; Brandon and Peg 2015</footer>
+    <section data-navigation-directive></section>
+    <a href="#/birdlist">Bird list</a>
+    <a href="#/addbird">New Bird</a>
+    <main class="align-center">
+      <h1 class="center-text">Bird Watcher</h1>
+      <section data-ng-view>
+      </section>
+    </main>
+    <footer data-footer-directive></footer>
+    <script src="js/bundle.js"></script>
   </body>
 </html>

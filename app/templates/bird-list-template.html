@@ -1,0 +1,36 @@
+<ul data-ng-controller="MainController" data-ng-init="getBirds()">
+  <li data-ng-repeat="bird in birds">
+    <div data-ng-if="!bird.editing">
+      <h3>{{ bird.birdname }}</h3>
+      <ul>
+        <li>
+           Bird Color: {{ bird.birdcolor }}
+        </li>
+        <li>
+           Date Seen: {{ bird.sightingDate }}
+        </li>
+        <li>
+          <button data-ng-click="edit(bird)">Edit</button>
+          <button data-ng-click="destroy(bird._id)">Destroy</button>
+        </li>
+      </ul>
+    </div>
+  <div data-ng-if="bird.editing">
+  <h3>Edit {{ bird.birdname }}</h3>
+  <ul>
+    <li>
+      <label for="edit__birdColor">Color: </label>
+      <input id="edit__birdColor" type="text" data-ng-model="bird.birdcolor" >
+    </li>
+    <li>
+      <label for="edit_sightingDate">Sighting Date: </label>
+      <input id="edit_sightingDate" type="text" data-ng-model="bird.sightingDate" >
+    </li>
+    <li>
+      <button data-ng-click="bird.editing = false">Cancel</button>
+      <button data-ng-click="update(bird._id, bird)">Save</button>|
+    </li>
+  </ul>
+</div>
+  </li>
+</ul>
